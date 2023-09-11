@@ -15,15 +15,15 @@ def correctOpenEvalFn(yourOpenEvalFn):
         sample_board = Board(RandomPlayer(), RandomPlayer())
         # setting up the board as though we've been playing
         board_state = [
-            ["Q1", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", "Q2", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " ", " "]     
+            ['Q1', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            ['X', 'X', 'X', ' ', ' ', ' ', ' ', 'X', ' '],
+            [' ', 'X', ' ', ' ', ' ', ' ', ' ', 'X', ' '],
+            [' ', ' ', ' ', ' ', ' ', ' ', 'X', 'Q2', 'X'],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X', ' '],
+            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' '],
+            [' ', ' ', 'X', 'X', 'X', ' ', 'X', ' ', ' '],
+            [' ', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ']
         ]
         sample_board.set_state(board_state, True)
         #test = sample_board.get_legal_moves()
@@ -95,7 +95,7 @@ def minimaxTest(yourAgent, minimax_fn):
 
         test_pass = True
 
-        expected_depth_scores = [(1, -1), (2, 4), (3, 2), (4, 3), (5, 3)]
+        expected_depth_scores = [(1, 3), (2, 7), (3, 5), (4, 1), (5, 2)]
         
         for depth, exp_score in expected_depth_scores:
             move, score = minimax_fn(player, sample_board, time_left, depth=depth, my_turn=True)
@@ -127,7 +127,7 @@ def minimaxTest(yourAgent, minimax_fn):
 
             test_pass = True
 
-            expected_depth_scores = [(1, -10), (2, -8), (3, -9), (4, -10), (5, -10)]
+            expected_depth_scores = [(1, -9), (2, -6), (3, -4), (4, -3), (5, -6)]
 
             for depth, exp_score in expected_depth_scores:
                 move, score = minimax_fn(player, sample_board, time_left, depth=depth, my_turn=False)

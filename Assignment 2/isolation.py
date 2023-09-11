@@ -339,7 +339,7 @@ class Board:
         """
         if (my_player == self.__player_1__ and self.__active_player__ == self.__player_1__):
             return self.get_active_moves()
-        if (my_player == self.__player_1__ and self.__active_player__ != self.__player_1__):
+        elif (my_player == self.__player_1__ and self.__active_player__ != self.__player_1__):
             return self.get_inactive_moves()
         elif (my_player == self.__player_2__ and self.__active_player__ == self.__player_2__):
             return self.get_active_moves()
@@ -398,6 +398,11 @@ class Board:
             for dist in range(1, max(self.height, self.width)):
                 col = direction[0] * dist + c
                 row = direction[1] * dist + r
+                # Allow for wrapping moves to other side of the board
+                if col < 0: col += self.height
+                if col >= self.height: col -= self.height
+                if row < 0: row += self.width
+                if row >= self.width: row -= self.width
                 if self.move_is_in_board(col, row) and self.is_spot_open(col, row) and (col, row) not in moves:
                     moves.append((col, row))
 
